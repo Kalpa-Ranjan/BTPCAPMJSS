@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SAPUI5 Excel Demo
 
 Small demo app with one screen and three buttons:
@@ -19,3 +20,6 @@ Or run a simple HTTP server from the workspace root and open http://localhost:80
 ```powershell
 python -m http.server 8000
 ```
+=======
+# BTPCAPMJSS
+>>>>>>> ab7729eb173c3e4801c4d0109aa430ad933ad51a
