@@ -1,0 +1,65 @@
+
+Prompt 1:
+Now add validation to excel file on upload. Validate immediate column first.
+If immediate is yes, date and time should blank.
+If immediate is No, date and time should fill.
+
+Prompt 2:
+Now make file that convert json format from excel data.
+For example:
+{
+    "JobName"="VTEST",
+    "Program"="RBDAPP01",
+    "VARIANT"="ZTEST",
+    "Username"="TESTBEH",
+    "IMMEDIATE"="true"
+}
+remember username and immediate should remain constant for every payload.
+
+
+Prompt 3:
+
+Step 1: Now I want to call BTP Job scheduler Service.
+Step 2: Job scheduler should be called through destination.
+Step 3: Job scheduler details
+ "clientid": "sb-3ffe0dd3-343c-43db-ab08-17eecdd9f2ba!b625063|sap-jobscheduler!b1",
+        "clientsecret": "0fc7383f-57d7-4be2-9c40-99cee21628fa$nME_zscOALQo2SKVVTaY29ygwCzRh3DZSWKo0aHQLxg=",
+        "url": "https://90b7867btrial.authentication.us10.hana.ondemand.com"
+
+Step 3: Job scheduler details
+
+
+BTP JSS KEY
+---------------
+{
+    "url": "https://jobscheduler-rest.cfapps.us10.hana.ondemand.com",
+    "saasregistryenabled": true,
+    "uaa": {
+        "clientid": "sb-3ffe0dd3-343c-43db-ab08-17eecdd9f2ba!b625063|sap-jobscheduler!b1",
+        "clientsecret": "0fc7383f-57d7-4be2-9c40-99cee21628fa$nME_zscOALQo2SKVVTaY29ygwCzRh3DZSWKo0aHQLxg=",
+        "url": "https://90b7867btrial.authentication.us10.hana.ondemand.com",
+        "identityzone": "90b7867btrial",
+        "identityzoneid": "c2973c9b-6d21-45c6-b69d-330813f30686",
+        "tenantid": "c2973c9b-6d21-45c6-b69d-330813f30686",
+        "tenantmode": "dedicated",
+        "sburl": "https://internal-xsuaa.authentication.us10.hana.ondemand.com",
+        "apiurl": "https://api.authentication.us10.hana.ondemand.com",
+        "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi4me4qufy7cbduZyCozY\nBwBcZwVYkMwTrozIu+Vi59TOWgU6uYnun1vza3EJKEjel+kj26h7iCOiSik1r258\nuLALKfjpRTxQ5BByE+BsQjaLeH48ivbLqvRzev5MXwR5cR5y5fkoFOyI3OU2u5Op\nQuLt4aVN0R9CUojZriTaSfw44sV7FMaS4Mao0YnM4e14yJekjNZwxOixc8Q7mT2K\n/oiH3ckvnV3MbPbyHVJcjYZdtQP+v2BEC5NgGgG2MiS9xqXxnLzHPwP03SlH1OEc\nUWHuo7gFLMD6iKJmWAaK7muM/+TNMS8ITho/sgtqiMK7PXuO3CP4qfpaxk+pynyH\n2wIDAQAB\n-----END PUBLIC KEY-----",
+        "xsappname": "3ffe0dd3-343c-43db-ab08-17eecdd9f2ba!b625063|sap-jobscheduler!b1",
+        "subaccountid": "c2973c9b-6d21-45c6-b69d-330813f30686",
+        "uaadomain": "authentication.us10.hana.ondemand.com",
+        "zoneid": "c2973c9b-6d21-45c6-b69d-330813f30686",
+        "credential-type": "binding-secret",
+        "serviceInstanceId": "3ffe0dd3-343c-43db-ab08-17eecdd9f2ba"
+    }
+}
+-----------------------
+Prompt 
+Step 1: Now call Job "OnPremJobs" of Job schedule service.
+Step 2: Create schedule 
+Step 3: Pass JobName from JSON as Description.
+Step 4: Pass JSON Payload here as Payload.
+Step 5: Value from excel, 
+        if immediate is yes, value is now,
+        else pass date and time as 4.30 UTC on 20th Oct 2015
+

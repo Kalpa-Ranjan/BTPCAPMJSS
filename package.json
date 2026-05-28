@@ -1,0 +1,42 @@
+{
+  "name": "sap-excel-app",
+  "version": "1.0.0",
+  "description": "CAP backend project for scheduling BTP jobs",
+  "repository": "mock",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "3.15.0",
+    "@sap-cloud-sdk/http-client": "3.15.0",
+    "@sap/cds": "^7.9.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^7.9.5"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "production": {
+          "kind": "none"
+        },
+        "development": {
+          "kind": "mocked"
+        }
+      },
+      "BTP_Job_Scheduler": {
+        "kind": "rest",
+        "credentials": {
+          "url": "https://jobscheduler-rest.cfapps.us10.hana.ondemand.com",
+          "auth": {
+            "clientid": "sb-3ffe0dd3-343c-43db-ab08-17eecdd9f2ba!b625063|sap-jobscheduler!b1",
+            "clientsecret": "0fc7383f-57d7-4be2-9c40-99cee21628fa$nME_zscOALQo2SKVVTaY29ygwCzRh3DZSWKo0aHQLxg=",
+            "tokenurl": "https://90b7867btrial.authentication.us10.hana.ondemand.com/oauth/token"
+          }
+        }
+      }
+    }
+  }
+}

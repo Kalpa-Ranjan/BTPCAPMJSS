@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Schedule Jobs in SAP BTP Job scheduler Service</title>
+  <script id="sap-ui-bootstrap"
+    src="https://ui5.sap.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_belize"
+    data-sap-ui-libs="sap.m"
+    data-sap-ui-compatVersion="edge">
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sapUiBody" id="content">
+  <script>
+    sap.ui.getCore().attachInit(function () {
+      var oApp = new sap.m.App({});
+
+      var oPage = new sap.m.Page({
+        title: "Schedule Jobs in SAP BTP Job scheduler Service",
+        content: [
+          new sap.m.VBox({
+            items: [
+              new sap.m.Button({
+                text: "Execute",
+                press: function () { window.scheduleOnPremJobs(); }, // Explicitly targeting global window scope
+                type: "Emphasized"
+              }),
+              new sap.m.Button({
+                text: "Template Excel",
+                press: function () { window.downloadTemplate(); }
+              }),
+              new sap.m.Button({
+                text: "Upload Excel",
+                press: function () { document.getElementById('fileInput').click(); }
+              })
+            ],
+            justifyContent: "Center",
+            alignItems: "Center",
+            width: "100%",
+            fitContainer: true
+          }),
+          new sap.m.Title({ text: "Result:", titleStyle: "H4" }),
+          
+          // FIX: Injected native HTML container via UI5 wrapper so document.getElementById works flawlessly
+          new sap.ui.core.HTML({
+            content: "<div id='resultText' style='white-space: pre-wrap; margin-top: 0.5rem;'>No file loaded.</div>"
+          })
+        ]
+      });
+
+      oApp.addPage(oPage);
+      oApp.placeAt("content");
+    });
+  </script>
+  <script src="excel/excel-converter.js"></script>
+  <script src="excel/job-scheduler.js"></script>
+  <script src="excel/excel-handler.js"></script>
+</body>
+</html>

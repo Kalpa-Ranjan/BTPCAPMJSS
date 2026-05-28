@@ -1,0 +1,20 @@
+{
+  "xsappname": "sap-excel-app",
+  "tenant-mode": "dedicated",
+  "description": "Security profile for Excel Scheduler App",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.User",
+      "description": "Standard User Access"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange_User",
+      "description": "Access role for executing cloud actions",
+      "scope-references": [
+        "$XSAPPNAME.User"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+_schema-version: '3.1'
+ID: sap-excel-app
+version: 1.0.1 # 👈 Bump this number from 1.0.0 to 1.0.1
+description: "SAP CAP Excel Background Job Scheduler Application"
+parameters:
+  deploy_mode: html5-repo
+
+modules:
+  # --------------------- BACKEND SRV MODULE ---------------------
+  - name: sap-excel-app-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: sap-excel-app-auth
+      - name: existing-btp-job-scheduler
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+
+resources:
+  # ----------------------- XSUAA SECURITY -----------------------
+  - name: sap-excel-app-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: sap-excel-app
+        tenant-mode: dedicated
+
+  # ----------- EXISTING JOB SCHEDULER BINDING (test17) -----------
+  - name: existing-btp-job-scheduler
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: test17
